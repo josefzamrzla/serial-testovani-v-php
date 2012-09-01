@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<foo>
+    <bar>
+        <baz id="bazId">something</baz>
+    </bar>
+    <bar>
+        <baz id="bazOtherId">something other</baz>
+    </bar>
+</foo>
