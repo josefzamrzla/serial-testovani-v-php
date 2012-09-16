@@ -27,20 +27,18 @@ class BankAccount
 
     /**
      * @param float $amount
+     * @param string $reason
      * @return float
      * @throws InvalidArgumentException
      */
-    public function depositMoney($amount)
+    public function depositMoney($amount, $reason = "deposit")
     {
-        if ((double)$amount <= 0) {
+        $amount = (double)sprintf("%.02f", (double)$amount);
+        if ($amount <= 0) {
             throw new InvalidArgumentException("Cannot deposit negative amount of money");
         }
 
-        $this->balance += round((double)$amount, 2);
-        // log action
-        $this->changes[] = "deposit: " . sprintf("%.02f", round((double)$amount, 2));
-
-        return $this->balance;
+        return $this->addAmount($amount, $reason . ": " . sprintf("%.02f", $amount));
     }
 
     /**
@@ -50,15 +48,12 @@ class BankAccount
      */
     public function withdrawMoney($amount)
     {
-        if ($this->getBalance() < (double)$amount) {
+        $amount = (double)sprintf("%.02f", (double)$amount);
+        if ($this->getBalance() < $amount) {
             throw new InvalidArgumentException("Insufficient balance");
         }
 
-        $this->balance -= round((double)$amount, 2);
-        // log action
-        $this->changes[] = "withdraw: " . sprintf("%.02f", round((double)$amount, 2));
-
-        return $this->balance;
+        return $this->subAmount($amount, "withdraw: " . sprintf("%.02f", $amount));
     }
 
     /**
@@ -66,7 +61,7 @@ class BankAccount
      */
     public function getBalance()
     {
-        return round($this->balance, 2);
+        return (double)sprintf("%.02f", $this->balance);
     }
 
     /**
@@ -75,5 +70,57 @@ class BankAccount
     public function getChanges()
     {
         return $this->changes;
+    }
+
+    /**
+     * @param float $amount
+     * @param string $reason
+     * @return float
+     */
+    protected function addAmount($amount, $reason)
+    {
+        $this->balance += $amount;
+        $this->changes[] = $reason;
+
+        return $this->balance;
+    }
+
+    /**
+     * @param float $amount
+     * @param string $reason
+     * @return float
+     */
+    protected function subAmount($amount, $reason)
+    {
+        $this->balance -= $amount;
+        $this->changes[] = $reason;
+
+        return $this->balance;
+    }
+
+    /**
+     * @param BankAccount $recipient
+     * @param float $amount
+     * @return float
+     * @throws InvalidArgumentException
+     */
+    public function transfer(BankAccount $recipient, $amount)
+    {
+        if ($this->getOwnerName() === $recipient->getOwnerName()) {
+            throw new InvalidArgumentException("Cannot transfer money to the same account");
+        }
+
+        if ($amount <= 0) {
+            throw new InvalidArgumentException("Cannot deposit negative amount of money");
+        }
+
+        if ($this->getBalance() < $amount) {
+            throw new InvalidArgumentException("Insufficient balance");
+        }
+
+        $amount = (double)sprintf("%.02f", (double)$amount);
+        $this->subAmount($amount, "sent: " . sprintf("%.02f", $amount));
+
+        $recipient->depositMoney($amount, "received");
     }
 }

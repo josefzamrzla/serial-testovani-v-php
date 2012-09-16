@@ -13,6 +13,8 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
         $this->account = new BankAccount("John", "Doe");
     }
 
+    /* initial implementation test cases */
+
     public function testGetOwnerName()
     {
         $this->assertSame("John Doe", $this->account->getOwnerName());
@@ -80,6 +82,9 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
         $this->account->withdrawMoney(99.99);
         $this->assertSame(2, count($this->account->getChanges()));
         $this->assertContains("withdraw: 99.99", $this->account->getChanges());
+
+        $this->assertSame(
+            array("deposit: 100.00", "withdraw: 99.99"), $this->account->getChanges());
     }
 
     public function testGetChangesAfterBadDeposit()
@@ -100,5 +105,69 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
         } catch(InvalidArgumentException $e) {/* ignore exception */}
 
         $this->assertSame(array(), $this->account->getChanges());
+    }
+
+    /* money transfer test cases */
+    public function testTransfer()
+    {
+        $recipient = new BankAccount("Jane", "Dawn");
+
+        $this->account->depositMoney(200);
+        $this->account->transfer($recipient, 99.99);
+
+        $this->assertSame(100.01, $this->account->getBalance());
+        $this->assertSame(
+            array("deposit: 200.00", "sent: 99.99"), $this->account->getChanges());
+
+        $this->assertSame(99.99, $recipient->getBalance());
+        $this->assertSame(
+            array("received: 99.99"), $recipient->getChanges());
+    }
+
+    public function testTransferToSameAccount()
+    {
+        $recipient = new BankAccount("John", "Doe");
+
+        $this->account->depositMoney(200);
+
+        try {
+            $this->account->transfer($recipient, 99.99);
+            $this->fail("Cannot transfer money to the same account");
+        } catch(InvalidArgumentException $e) {/* ignore exception */}
+
+        $this->assertSame(200.00, $this->account->getBalance());
+        $this->assertSame(array("deposit: 200.00"), $this->account->getChanges());
+
+        $this->assertSame(0.0, $recipient->getBalance());
+        $this->assertSame(array(), $recipient->getChanges());
+    }
+
+    public function testTransferBadAmount()
+    {
+        $recipient = new BankAccount("Jane", "Dawn");
+
+        try {
+            $this->account->transfer($recipient, -100);
+        } catch(InvalidArgumentException $e) {/* ignore exception */}
+
+        $this->assertSame(0.0, $this->account->getBalance());
+        $this->assertSame(array(), $this->account->getChanges());
+        $this->assertSame(0.0, $recipient->getBalance());
+        $this->assertSame(array(), $recipient->getChanges());
+    }
+
+    public function testTransferWithInsufficientBalance()
+    {
+        $this->account->depositMoney(100);
+        $recipient = new BankAccount("Jane", "Dawn");
+
+        try {
+            $this->account->transfer($recipient, 100.01);
+        } catch(InvalidArgumentException $e) {/* ignore exception */}
+
+        $this->assertSame(100.00, $this->account->getBalance());
+        $this->assertSame(array("deposit: 100.00"), $this->account->getChanges());
+        $this->assertSame(0.0, $recipient->getBalance());
+        $this->assertSame(array(), $recipient->getChanges());
     }
 }
