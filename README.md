@@ -11,3 +11,7 @@ Popis instalace PHPUnit, základní terminologie, první test, metody setUp a te
 ### 03: Asserty a constraints
 [http://www.zdrojak.cz/clanky/testovani-v-php-asserty-a-constraints/](http://www.zdrojak.cz/clanky/testovani-v-php-asserty-a-constraints/)
 Přehled assertů, které PHPUnit nabízí. Tvorba vlastního constraint.
+
+### 04: Praktický příklad
+[http://www.zdrojak.cz/clanky/testovani-v-php-prakticky-priklad/](http://www.zdrojak.cz/clanky/testovani-v-php-prakticky-priklad/) 
+Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
