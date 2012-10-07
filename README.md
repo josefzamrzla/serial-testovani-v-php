@@ -15,3 +15,6 @@ Přehled assertů, které PHPUnit nabízí. Tvorba vlastního constraint.
 ### 04: Praktický příklad
 [http://www.zdrojak.cz/clanky/testovani-v-php-prakticky-priklad/](http://www.zdrojak.cz/clanky/testovani-v-php-prakticky-priklad/) 
 Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
+
+### 05: Anotace
+[http://www.zdrojak.cz/clanky/testovani-v-php-anotace/](http://www.zdrojak.cz/clanky/testovani-v-php-anotace/) Přehled anotací PHPUnit.
