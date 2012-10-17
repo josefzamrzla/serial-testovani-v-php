@@ -18,3 +18,7 @@ Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
 
 ### 05: Anotace
 [http://www.zdrojak.cz/clanky/testovani-v-php-anotace/](http://www.zdrojak.cz/clanky/testovani-v-php-anotace/) Přehled anotací PHPUnit.
+
+### 06: Odstiňujeme závislosti
+[http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti](http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti) 
+Ǔvod do tvorby a používání mocků v PHPUnit.
