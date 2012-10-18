@@ -21,4 +21,4 @@ Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
 
 ### 06: Odstiňujeme závislosti
 [http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti](http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti) 
-Ǔvod do tvorby a používání mocků v PHPUnit.
+Úvod do testování tříd se závislostmi, nahrazování závislostí mocky.
