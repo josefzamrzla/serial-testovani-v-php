@@ -23,6 +23,6 @@ Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
 [http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti](http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti) 
 Úvod do testování tříd se závislostmi, nahrazování závislostí mocky.
 
-### 07: Odsťiňujeme závislosti II.
+### 07: Odstiňujeme závislosti II.
 [http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti-ii/](http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti-ii/)
 Mock webservice, filesystému, abstraktní třídy a další praktický příklad.
