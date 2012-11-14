@@ -1,9 +1,9 @@
 product:
   -
     id: 1
-    name: "Hello buddy!"
+    name: "Test product 1"
     price: 124
   -
     id: 2
-    name: "I like it!"
+    name: "Test product 2"
     price: 546
