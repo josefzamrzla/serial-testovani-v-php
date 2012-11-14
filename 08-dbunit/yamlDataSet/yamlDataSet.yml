@@ -1,0 +1,9 @@
+product:
+  -
+    id: 1
+    name: "Hello buddy!"
+    price: 124
+  -
+    id: 2
+    name: "I like it!"
+    price: 546

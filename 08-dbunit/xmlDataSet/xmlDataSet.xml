@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="product">
+        <column>id</column>
+        <column>name</column>
+        <column>price</column>
+        <row>
+            <value>1</value>
+            <value>Test product 1</value>
+            <value>123</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Test product 2</value>
+            <null />
+        </row>
+    </table>
+</dataset>

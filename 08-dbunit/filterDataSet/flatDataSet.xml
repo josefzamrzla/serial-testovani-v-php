@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <product id="1" name="Test product 1" price="123" bar="1" />
+    <product id="2" name="Test product 2" price="456" bar="2" />
+
+    <foo id="4" bar="val" baz="valval" />
+    <foo id="5" bar="val" baz="valval" />
+</dataset>
