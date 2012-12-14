@@ -26,3 +26,11 @@ Praktický příklad pokrytí třídy testy, refactoring pomocí TDD.
 ### 07: Odstiňujeme závislosti II.
 [http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti-ii/](http://www.zdrojak.cz/clanky/testovani-v-php-odstinujeme-zavislosti-ii/)
 Mock webservice, filesystému, abstraktní třídy a další praktický příklad.
+
+### 08: Testy integrace s databází
+[http://www.zdrojak.cz/clanky/testovani-v-php-testy-integrace-s-databazi/](http://www.zdrojak.cz/clanky/testovani-v-php-testy-integrace-s-databazi/)
+Rozšíření DBUnit
+
+### 09: Testy integrace s databází II.
+[http://www.zdrojak.cz/clanky/testovani-v-php-testy-integrace-s-databazi-ii/](http://www.zdrojak.cz/clanky/testovani-v-php-testy-integrace-s-databazi-ii/)
+Dynamické datasety
